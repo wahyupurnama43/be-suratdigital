@@ -1,0 +1,34 @@
+{
+  "name": "be-suratdigital",
+  "description": "simple rest api for letter digitalization",
+  "private": true,
+  "readme": "https://github.com/wahyupurnama43/be-suratdigital/blob/main/README.md",
+  "dependencies": {
+    "@prisma/client": "^5.4.2",
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "morgan": "^1.10.0",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "prisma": "^5.4.2"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wahyupurnama43/be-suratdigital"
+  },
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  }
+}
