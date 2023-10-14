@@ -3,17 +3,17 @@ const router = require('express').Router();
 
 const { urlClient } = require('../configs/env');
 
-const controller = require('../controllers/AuthController');
-const redirectIfAuthenticated = require('../middlewares/redirect-if-authenticated');
+const { handleAttempt, handleRevoke, handleRotate } = require('../controllers/AuthController');
+const abortIfAuthenticated = require('../middlewares/abort-if-authenticated');
 
 router.post(
   '/attempt',
   passport.authenticate('local', { failureRedirect: `${urlClient.trim()}/login`, session: false }),
-  redirectIfAuthenticated,
-  controller.handleAttempt
+  abortIfAuthenticated,
+  handleAttempt
 );
 
-router.post('/revoke', passport.authenticate('jwt', { session: false }), controller.handleRevoke);
-router.post('/rotate', passport.authenticate('jwt', { session: false }), controller.handleRotate);
+router.get('/revoke', passport.authenticate('jwt', { session: false }), handleRevoke);
+router.get('/rotate', passport.authenticate('jwt', { session: false }), handleRotate);
 
 module.exports = router;
